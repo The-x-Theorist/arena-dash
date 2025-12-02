@@ -1,15 +1,10 @@
 package main
 
 import (
-<<<<<<< Updated upstream
-	"log"
-	"sync"
-=======
 	"encoding/json"
 	"log"
 	"sync"
 	"time"
->>>>>>> Stashed changes
 )
 
 type PlayerInput struct {
@@ -49,8 +44,6 @@ func (r *Room) RemovePlayer(playerID string) {
 	delete(r.Players, playerID)
 	log.Printf("Player %s left room %s", playerID, r.ID)
 }
-<<<<<<< Updated upstream
-=======
 
 func (r *Room) Start() {
 	ticker := time.NewTicker(50 * time.Millisecond)
@@ -133,4 +126,3 @@ func clamp(value *float64, min float64, max float64) {
 		* value = max
 	}
 }
->>>>>>> Stashed changes
