@@ -50,7 +50,7 @@ func (r *Room) Start() {
 	defer ticker.Stop()
 
 	for range ticker.C {
-		// r.step()
+		r.step()
 	}
 }
 
@@ -115,6 +115,32 @@ func (r *Room) step() {
 			delete(r.Players, id)
 		}
 	}
+}
+
+func (r *Room) applyInput(in PlayerInput) {
+	p, ok := r.Players[in.PlayerID]
+
+	if !ok {
+		return
+	}
+
+	var v Vec2
+	speed := 100.0
+
+	for _, key := range in.Pressed {
+		switch key {
+		case "UP":
+			v.Y -= speed
+		case "DOWN":
+			v.Y += speed
+		case "LEFT":
+			v.X -= speed
+		case "RIGHT":
+			v.X += speed
+		}
+		
+	}
+	p.Vel = v
 }
 
 func clamp(value *float64, min float64, max float64) {
